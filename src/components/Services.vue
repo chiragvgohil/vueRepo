@@ -118,8 +118,9 @@
     },
     components: { Layout },
     methods: {
-      addUsers() {
 
+      addUsers() {
+this.$emit('setData', this.list)
         if ( this.allInputs.first_name === '' ||  this.allInputs.last_name === '' ||  this.allInputs.email === ''){
           let first_name = document.querySelector('#first_name').value.trim()
           let last_name = document.querySelector('#last_name').value.trim()

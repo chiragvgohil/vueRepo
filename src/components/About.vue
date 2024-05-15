@@ -1,22 +1,7 @@
 <template>
   <div>
     <Layout/>
-    <div class="bg-gradient-to-r from-teal-400 to-yellow-200 h-screen ">
-      <div class="card ">
-        <div class="content">
-          <div class="front shadow-xl">
-            <img width="100%"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxWUbDvub4AnmvUxt0R73KtUftAhuNM-DF15SYE7i3D4xJIZ8Fyli8PySrvZngxs9ARGw&usqp=CAU"
-                 alt="">
-          </div>
-          <div class="back shadow-xxl">
-            <img width="100%"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtieUq4tS6Ph8KE3bar3TwpplRVwOqN80b_A&s"
-                 alt="">
-          </div>
-        </div>
-      </div>
-    </div>
+    about
   </div>
 </template>
 
@@ -28,8 +13,13 @@
     data() {
       return {
         msg: 0,
+        variable2: 'Bar',
+
       };
     },
+    watch: {
+
+  },
     components: { Layout }
   }
 </script>
