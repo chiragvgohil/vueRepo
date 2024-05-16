@@ -1,7 +1,11 @@
 <template>
   <div>
     <Layout/>
-    about
+    <ul class="mt-10 bg-red-500">
+      <li v-for="item in items" :key="item.id">
+        <input type="text" v-model="item.name" @change="updateItem(item)">
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -14,8 +18,27 @@
       return {
         msg: 0,
         variable2: 'Bar',
-
+        items: []
       };
+    },
+    created() {
+      // Retrieve the array from localStorage when the component is created
+      const storedItems = localStorage.getItem('myddArray');
+      if (storedItems) {
+        this.items = JSON.parse(storedItems);
+      }
+    },
+    methods: {
+      updateItem(updatedItem) {
+        // Find the index of the item to update
+        const index = this.items.findIndex(item => item.id === updatedItem.id);
+        if (index !== -1) {
+          // Update the item in the array
+          this.items.splice(index, 1, updatedItem);
+          // Save the updated array back to localStorage
+          localStorage.setItem('myddArray', JSON.stringify(this.items));
+        }
+      }
     },
     watch: {
 

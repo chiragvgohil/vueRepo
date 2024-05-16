@@ -60,7 +60,7 @@
 
     <table class=" divide-y mt-[100px] divide-gray-200 container mx-auto ">
       <thead>
-      <tr>
+      <tr class="row">
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First name</th>
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last name</th>
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
@@ -99,16 +99,12 @@
       return {
         id: 0 ,
         toggle: true,
-        list: [{
-          first_name: 'chirag',
-          last_name: 'gohil',
-          email: 'chirag@gmail.com',
-        },
-          {
-            first_name: 'yash',
-            last_name: 'chauhan',
-            email: 'yash@gmail.com',
-          }],
+        myArray: [
+          { id: 1, name: 'Object 1' },
+          { id: 2, name: 'Object 2' },
+          { id: 3, name: 'Object 3' }
+        ],
+        list: [],
         allInputs: {
           first_name: '',
           last_name: '',
@@ -117,10 +113,18 @@
       };
     },
     components: { Layout },
-    methods: {
+    mounted() {
 
+      // Retrieve the array from localStorage when the component is mounted
+      const storedArray = localStorage.getItem('myArray');
+      if (storedArray) {
+        // Parse the JSON string back into an array of objects
+        this.list = JSON.parse(storedArray);
+      }
+    },
+    methods: {
       addUsers() {
-this.$emit('setData', this.list)
+
         if ( this.allInputs.first_name === '' ||  this.allInputs.last_name === '' ||  this.allInputs.email === ''){
           let first_name = document.querySelector('#first_name').value.trim()
           let last_name = document.querySelector('#last_name').value.trim()
@@ -139,6 +143,9 @@ this.$emit('setData', this.list)
 
          }else{
           document.querySelector('.email').classList.remove('showElement');
+          document.querySelector('.last_name').classList.remove('showElement');
+          document.querySelector('.first_name').classList.remove('showElement');
+
           this.list.push(this.allInputs);
           this.allInputs = {
             first_name: '',
@@ -147,11 +154,13 @@ this.$emit('setData', this.list)
           }
         }
 
+        localStorage.setItem('myArray', JSON.stringify(this.list));
 
       },
 
       deleteUser(index) {
         this.list.splice(index, 1);
+        this.addUsers();
       },
 
       UpdateUsers(index) {
@@ -161,20 +170,18 @@ this.$emit('setData', this.list)
         this.allInputs.last_name = this.list[index].last_name;
         this.allInputs.email = this.list[index].email;
         this.id = index;
-        console.log(this.id,"ADSADSADASdAS")
       },
 
       updatedUser(){
         this.list[this.id] = this.allInputs;
+        localStorage.setItem('myArray', JSON.stringify(this.list));
         this.allInputs = {
           first_name: '',
           last_name: '',
           email: '',
         }
         this.toggle = true;
-      }
-
-
+      },
     },
   }
 </script>
