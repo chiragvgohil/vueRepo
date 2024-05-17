@@ -12,7 +12,7 @@
           <li><a href="#/services" class="text-white hover:text-gray-400">Services</a></li>
           <li><a href="#/contact" class="text-white hover:text-gray-400">Contact</a></li>
           <li><a href="#/slotcomponent" class="text-white hover:text-gray-400">Slot</a></li>
-         </ul>
+          </ul>
       </div>
     </nav>
   </div>

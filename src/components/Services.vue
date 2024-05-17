@@ -60,19 +60,19 @@
 
     <table class=" divide-y mt-[100px] divide-gray-200 container mx-auto ">
       <thead>
-      <tr class="row">
-        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First name</th>
-        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last name</th>
-        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
-        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+      <tr class="">
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">First name</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">Last name</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4 ">E-mail</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4   ">Action</th>
       </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
       <tr v-for="(item,index) in list" :key="index">
-        <td class="px-6 py-4 whitespace-nowrap">{{item.first_name}}</td>
-        <td class="px-6 py-4 whitespace-nowrap">{{item.last_name}}</td>
-        <td class="px-6 py-4 whitespace-nowrap">{{item.email}}</td>
-        <td class="px-6 py-4 whitespace-nowrap">
+        <td class="px-6 py-4 whitespace-nowrap W-1/4">{{item.first_name}}</td>
+        <td class="px-6 py-4 whitespace-nowrap W-1/4">{{item.last_name}}</td>
+        <td class="px-6 py-4 whitespace-nowrap W-1/4">{{item.email}}</td>
+        <td class="px-6 py-4 whitespace-nowrap W-1/4  ">
           <button @click="UpdateUsers(index)"
                   class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">
             Edit
@@ -99,11 +99,6 @@
       return {
         id: 0 ,
         toggle: true,
-        myArray: [
-          { id: 1, name: 'Object 1' },
-          { id: 2, name: 'Object 2' },
-          { id: 3, name: 'Object 3' }
-        ],
         list: [],
         allInputs: {
           first_name: '',
